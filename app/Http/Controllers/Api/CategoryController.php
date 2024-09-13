@@ -8,14 +8,12 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    // عرض جميع الفئات
     public function index()
     {
         $categories = Category::all();
         return response()->json($categories);
     }
 
-    // عرض فئة معينة بناءً على الـ ID
     public function show($id)
     {
         $category = Category::find($id);
@@ -26,7 +24,6 @@ class CategoryController extends Controller
         }
     }
 
-    // إنشاء فئة جديدة
     public function store(Request $request)
     {
         $request->validate([
@@ -42,7 +39,6 @@ class CategoryController extends Controller
         return response()->json($category, 201);
     }
 
-    // تحديث فئة موجودة
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
