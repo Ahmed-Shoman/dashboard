@@ -15,14 +15,18 @@
   <body>
     <section class="home">
       <div class="form_container">
-          <form action="#">
+          <form action="{{ route('postLogin') }}" method="POST">
+            @csrf
             <h2>Login</h2>
             <div class="input_box">
-              <input type="email" placeholder="Enter your email" required />
+              <input type="email"
+              name="email"
+               placeholder="Enter your email" required />
               <i class="uil uil-envelope-alt email"></i>
             </div>
             <div class="input_box">
               <input
+              name="password"
                 type="password"
                 placeholder="Enter your password"
                 required

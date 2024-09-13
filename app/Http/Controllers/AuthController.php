@@ -26,16 +26,17 @@ class AuthController extends Controller
 
         $credentials = ['email' => $request->email, 'password' => $request->password];
 
-        if (Auth::guard("admin")->attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
 
              Session::flash('success',  'تمت تسجيل الدخول بنجاح');
 
             $request->session()->regenerate();
 
-            return redirect()->route('admin.home');
+            return redirect()->route('users.index');
         }
 
         return back()->onlyInput('email')->withFlashMessage('يرجى التأكد من البريدالالكتروني و كلمة المرور');
+
 }
 
 }
