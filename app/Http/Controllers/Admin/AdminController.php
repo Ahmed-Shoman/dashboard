@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class AuthController extends Controller
+class AdminController extends Controller
 {
-    public function index()
+      public function index()
     {
       return view('admin.login.index');
     }
-
-
-
         public function postLogin(Request $request)
     {
         $rules = [
@@ -26,7 +24,7 @@ class AuthController extends Controller
 
         $credentials = ['email' => $request->email, 'password' => $request->password];
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
 
              Session::flash('success',  'تمت تسجيل الدخول بنجاح');
 

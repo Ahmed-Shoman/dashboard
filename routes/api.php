@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController as ApiCategoryController;
-use App\Http\Controllers\Api\CategoryController;
+ use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController as ApiProductController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -24,6 +26,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('signup', [AuthController::class, 'signup']);
+Route::post('verify', [AuthController::class, 'verification']);
+
+Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
+Route::post('reset-password-code', [AuthController::class, 'resetPasswordCode']);
+Route::post('reset-password', [AuthController::class, 'resetPassword']);
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
+Route::post('update-profile', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
+Route::post('update-password', [AuthController::class, 'updatePassword'])->middleware('auth:sanctum');
 
 
 // Product Routes

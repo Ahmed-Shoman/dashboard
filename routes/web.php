@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -58,5 +59,5 @@ route::get('/categories/{id}/edit',[CategoryController::class,'edit'])->name('ca
 route::put('/categories/{id}',[CategoryController::class,'update'])->name('categories.update');
 route::delete('/categories/{id}',[CategoryController::class,'destroy'])->name('categories.destroy');
 /////
-route::get('/login',[AuthController::class,'index'])->name('login');
-route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
+route::get('/login',[AdminController::class,'index'])->name('login');
+route::post('/login',[AdminController::class,'postLogin'])->name('postLogin');
