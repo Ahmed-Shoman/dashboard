@@ -29,30 +29,16 @@ route::put('/users/{id}',[UserController::class,'update'])->name('users.update')
 route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy');
                        ///routes for products///
 
-// عرض نموذج إضافة منتج
 Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
-
-// تخزين منتج جديد
 Route::post('products', [ProductController::class, 'store'])->name('products.store');
-
-// عرض قائمة المنتجات
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
-
-// عرض تفاصيل منتج محدد
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
-
-// عرض نموذج تحرير منتج محدد
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-
-// تحديث منتج محدد
 Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
-
-// حذف منتج محدد
 Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-                       ///routes for categories///
+                      ///routes for categories///
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-
 route::get('/categories/create',[CategoryController::class,'create'])->name('categories.create');
 route::post('/categories',[CategoryController::class,'store'])->name('categories.store');
 route::get('/categories/{id}/edit',[CategoryController::class,'edit'])->name('categories.edit');
